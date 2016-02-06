@@ -38,6 +38,9 @@ function TinyPromise (executor) {
     return o.promise
   }
 
+  this['catch'] = onRejected =>
+    this['then'](void 0, onRejected)
+
   executor(resolve.bind(this), reject.bind(this))
 }
 
