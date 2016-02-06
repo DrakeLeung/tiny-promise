@@ -1,5 +1,6 @@
 import {
-  isFunction
+  isFunction,
+  defineProp
 } from './helper/util'
 
 import * as promiseState from './constant/promiseState'
@@ -43,5 +44,17 @@ function TinyPromise (executor) {
 
   executor(resolve.bind(this), reject.bind(this))
 }
+
+defineProp(TinyPromise, 'resolve', msg =>
+  new TinyPromise((resolve, reject) => {
+    resolve(msg)
+  })
+)
+
+defineProp(TinyPromise, 'reject', msg =>
+  new TinyPromise((resolve, reject) =>
+    reject(msg)
+  )
+)
 
 export default TinyPromise

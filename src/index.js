@@ -9,11 +9,20 @@ const p = new TinyPromise((resolve, reject) => {
   // resolve('Success')
 })
 
-p
-  .then(
-    msg => msg.toUpperCase(),
-    reason => reason.toUpperCase()
-  )
-  .catch(upperMsg =>
-    console.log(upperMsg)
-  )
+// p
+//   .then(
+//     msg => msg.toUpperCase(),
+//     reason => reason.toUpperCase()
+//   )
+//   .catch(upperMsg =>
+//     console.log(upperMsg)
+//   )
+
+//
+// resolve
+//
+TinyPromise.resolve('success')
+  .then(value => console.log(value))
+
+TinyPromise.reject('Ooops')
+  .catch(msg => console.error(msg))
